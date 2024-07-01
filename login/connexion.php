@@ -25,23 +25,8 @@
 </html>
 
 <?php
+    require_once "functions.php";
     if(isset($_POST["email"], $_POST["password"])){
-        require_once "../bdd.php";
-        $sql_select_utilisateur = "SELECT * FROM Users WHERE email lIKE :email AND password LIKE :password;";
-        $requete_select_utilisateur = $conn->prepare($sql_select_utilisateur);
-        $requete_select_utilisateur->execute(
-            array(
-                ":email" => $_POST["email"],
-                ":password" => $_POST["password"]
-            )
-        );
-        $resultat = $requete_select_utilisateur->fetch();
-
-        if($resultat != false){
-            $_SESSION["username"] = $resultat["username"];
-            $_SESSION["password"] = $resultat["password"];
-
-            header("Location:../index.php");
-        }
+        selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
     }
 ?>
