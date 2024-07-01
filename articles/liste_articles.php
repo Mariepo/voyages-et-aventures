@@ -17,12 +17,17 @@
     }
     
     // Display
-    function displayCategorieName($article){
+    function returnCategorieName($article){
         $categoriesArray = selectCategoriesInBDD();
         foreach($categoriesArray as $categorie){
             if($categorie['id'] == $article['category_id']){
-                echo $categorie['name'];
+                return $categorie['name'];
             }
+        }
+    }
+    function limitContentSize($contenu, $maxSize){
+        if(mb_strlen($contenu) > $maxSize){
+            return $contenu = mb_substr($contenu, 0, $maxSize) . '...';
         }
     }
 ?>
@@ -43,14 +48,10 @@
                 echo "<div class='card'>";
                     // echo "<img src='" . $article['image'] . "'>";
                     echo "<h2>" . $article['title'] . "</h2>";
-                    displayCategorieName($article);
-
-                    // Limier la taille de content
+                    echo "<span>" . returnCategorieName($article) . "</span>";
+                    // Limier la taille du contenu
                     $content = $article['content'];
-                    if(mb_strlen($content) > 200){
-                        $content = mb_substr($content, 0, 200) . '...';
-                    }
-                    echo "<p>" . $content . "</p>";
+                    echo "<p>" . limitContentSize($content, 200) . "</p>";
                     echo "<span>Écrit par " . $article['user_id'] . " le " . $article['created_at'] . "</span>";
                     echo "<a href='#' class='article-link'>Lire l'article</a>";
                 echo "</div>";
