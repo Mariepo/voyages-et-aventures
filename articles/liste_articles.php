@@ -1,5 +1,6 @@
 <?php
     require_once "../bdd.php";
+    // BBD
     function selectArticlesInBDD(){
         global $conn;
         $sql_select_articles = "SELECT title, content, image, user_id, category_id, created_at FROM Articles";
@@ -7,6 +8,23 @@
         $requete_select_articles->execute();
         return $requete_select_articles->fetchAll(PDO::FETCH_ASSOC);
     };
+    function selectCategoriesInBDD(){
+        global $conn;
+        $sql_select_categories = "SELECT id, name FROM Categories";
+        $requete_select_categories = $conn->prepare($sql_select_categories);
+        $requete_select_categories->execute();
+        return $requete_select_categories->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    // Display
+    function displayCategorieName($article){
+        $categoriesArray = selectCategoriesInBDD();
+        foreach($categoriesArray as $categorie){
+            if($categorie['id'] == $article['category_id']){
+                echo $categorie['name'];
+            }
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +43,12 @@
                 echo "<div class='card'>";
                     // echo "<img src='" . $article['image'] . "'>";
                     echo "<h2>" . $article['title'] . "</h2>";
-                    echo "<span>" . $article['category_id'] . "</span>";
+                    displayCategorieName($article);
+
                     // Limier la taille de content
                     $content = $article['content'];
-                    if(mb_strlen($content) > 100){
-                        $content = mb_substr($content, 0, 100) . '...';
+                    if(mb_strlen($content) > 200){
+                        $content = mb_substr($content, 0, 200) . '...';
                     }
                     echo "<p>" . $content . "</p>";
                     echo "<span>Écrit par " . $article['user_id'] . " le " . $article['created_at'] . "</span>";

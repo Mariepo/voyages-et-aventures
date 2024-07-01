@@ -1,6 +1,8 @@
 <?php
 require_once "../bdd.php";
 
+
+// BDD
 function createUserInBDD($username, $email, $password) {
     global $conn;
     $sql_insert_utilisateur = "INSERT INTO Users(username, email, password) VALUES (:username, :email, :password);";
@@ -13,7 +15,6 @@ function createUserInBDD($username, $email, $password) {
         )
     );
 };
-
 function selectUserInBDDAndLogUser($email, $password){
     global $conn;
     $sql_select_utilisateur = "SELECT email, password FROM Users WHERE email lIKE :email AND password LIKE :password;";
