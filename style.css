@@ -1,0 +1,58 @@
+/* Global */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    /* font-family: sans-serif; */
+    font-size: 1.6rem; /* 16px */
+}
+a {
+    all: unset;
+    cursor: pointer;
+}
+img {
+    width: 100%;
+    height: 100%;
+}
+ul {
+    list-style: none;
+}
+button {
+    cursor: pointer;
+}
+
+/* Articles */
+.container-articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    gap: 2.4rem;
+}
+.card {
+    display: flex;
+    flex-basis: calc(33% - (24px/2));
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.6rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgb(220, 232, 236);
+}
+.article-link {
+    padding: 0.8rem;
+    color: white;
+    background-color: rgb(71, 111, 146);
+    border-radius: 20px;
+
+}
+/* RESPONSIVE BREAKPOINTS */ 
+/* Tablettes et moyennes écrans */
+@media screen and (max-width: 1200px){
+    .card {
+        flex-grow: 1;
+    }
+}

@@ -16,7 +16,7 @@ function createUserInBDD($username, $email, $password) {
 
 function selectUserInBDDAndLogUser($email, $password){
     global $conn;
-    $sql_select_utilisateur = "SELECT * FROM Users WHERE email lIKE :email AND password LIKE :password;";
+    $sql_select_utilisateur = "SELECT email, password FROM Users WHERE email lIKE :email AND password LIKE :password;";
     $requete_select_utilisateur = $conn->prepare($sql_select_utilisateur);
     $requete_select_utilisateur->execute(
         array(
