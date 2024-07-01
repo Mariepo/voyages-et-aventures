@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <head>
     <title>Inscription</title>
@@ -20,16 +23,15 @@
 </body>
 
 <?php
+    require_once "functions.php";
     if(isset($_POST["username"], $_POST["email"], $_POST["password"])){
-        include "bdd.php";
-        $sql_insert_utilisateur = "INSERT INTO Users(username, email, password) VALUES (:username, :email, :password);";
-        $requete_insert_utilisateur = $conn->prepare($sql_insert_utilisateur);
-        $requete_insert_utilisateur->execute(
-            array(
-                ":username" => $_POST['username'],
-                ":email" => $_POST['email'],
-                ":password" => $_POST['password']
-            )
-        );
-    }
+        try {
+            // Création de l'utilisateur
+            createUserInBDD($_POST["username"], $_POST["email"], $_POST["password"]); 
+            // Utilisateur logué automatiquement et redirigé vers index
+            selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
+        } catch (PDOException $e){
+            echo "<br>Erreur lors de l'inscription" . $e->getMessage();
+        }
+    } 
 ?>

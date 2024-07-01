@@ -26,7 +26,7 @@
 
 <?php
     if(isset($_POST["email"], $_POST["password"])){
-        require_once "bdd.php";
+        require_once "../bdd.php";
         $sql_select_utilisateur = "SELECT * FROM Users WHERE email lIKE :email AND password LIKE :password;";
         $requete_select_utilisateur = $conn->prepare($sql_select_utilisateur);
         $requete_select_utilisateur->execute(
@@ -41,7 +41,7 @@
             $_SESSION["username"] = $resultat["username"];
             $_SESSION["password"] = $resultat["password"];
 
-            header("Location:ajout_article.php");
+            header("Location:../index.php");
         }
     }
 ?>

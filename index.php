@@ -1,5 +1,15 @@
 <?php
 session_start();
     echo "<br>";
-    echo "Accès autorisé, bonjour " . $_SESSION["username"];
+    if(!isset($_SESSION["username"])){
+        header('Location: ./login/inscription.php');
+    } else {
+        echo "Accès autorisé, bonjour " . $_SESSION["username"];
+        echo '<br>';
+        echo '<a href="./login/deconnexion.php">Se déconnecter</a>';
+    }
+?>
+
+<!-- Afficher des articles -->
+
 
