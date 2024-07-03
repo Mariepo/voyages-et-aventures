@@ -25,8 +25,13 @@
 </html>
 
 <?php
-    require_once "functions.php";
-    if(isset($_POST["email"], $_POST["password"])){
+require_once "functions.php";
+if(isset($_POST["email"], $_POST["password"])){
+    try {
+        // Utilisateur logué automatiquement et redirigé vers index
         selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
+    } catch (PDOException $e){
+        echo "<br>Erreur lors de la connexion" . $e->getMessage();
     }
+} 
 ?>
