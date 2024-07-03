@@ -1,7 +1,6 @@
 <?php
 require_once "../bdd.php";
 
-
 // BDD
 function createUserInBDD($username, $email, $password) {
     global $conn;

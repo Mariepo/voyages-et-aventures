@@ -2,6 +2,20 @@
     session_start();
     require_once __DIR__ . '/../bdd.php';
     require_once "functions.php";
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] == "insert"){
+        global $conn;
+        $sql_insert_article = "INSERT INTO Articles(title, content, category_id) VALUES(:title, :content, :categorie);";
+        $requete_insert_article = $conn->prepare($sql_insert_article);
+        $requete_insert_article->execute(
+            array(
+                ":title" => htmlspecialchars($_POST["title"]),
+                ":content" => htmlspecialchars($_POST["content"]),
+                ":categorie" => intval($_POST["categorie"])
+            )
+        );
+        echo "Article créé avec succès!";
+    };
 ?>
 
 <!DOCTYPE html>
@@ -16,11 +30,11 @@
         <h2>Ajouter un article</h2>
         <form action="?action=insert" method="POST">
             <div>
-                <label for="title">Titre :</label>
+                <label for="title">Titre *</label>
                 <input type="text" name="title" placeholder="Titre de votre article">
             </div>
             <div>
-                <label for="content">Contenu :</label>
+                <label for="content">Contenu *</label>
                 <textarea name="content" id="content" rows="14">Contenu de votre article</textarea>
             </div>
             <div>
@@ -30,7 +44,7 @@
                         $categorieArray = selectCategoriesInBDD();
                         foreach($categorieArray as $categorie){
                     ?>
-                            <option><?php echo $categorie["name"]; ?></option>
+                        <option value="<?php echo $categorie['id']; ?>"><?php echo $categorie['name']; ?></option>
                     <?php 
                         } 
                     ?>
