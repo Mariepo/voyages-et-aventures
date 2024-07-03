@@ -1,5 +1,7 @@
 <?php
-session_start();
+    session_start();
+    require_once "./functions-global.php";
+    displaySuccessBanner('Destination ajoutée avec succès !');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,7 @@ session_start();
                 header('Location: ./login/inscription.php');
             } else {
                 echo '<div class="header">';
-                    echo '<h1>Accès autorisé, bonjour ' . $_SESSION["username"] . '</h1>';
+                    echo '<h1>Bonjour ' . $_SESSION["username"] . '</h1>';
                     echo '<a href="./login/deconnexion.php">Se déconnecter</a>';
                 echo "</div>";
             }
@@ -37,6 +39,12 @@ session_start();
     <script>
         function redirectToCreateArticle(){
             window.location.replace('./articles/ajout_article.php');
+        }
+        function closeElement(element){
+            const componentToClose = document.querySelector(element);
+            const closeButton = document.querySelector(".close-btn");
+            componentToClose.style.display = "none";
+            window.location.replace("./");
         }
     </script>
 </body>

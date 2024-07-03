@@ -1,5 +1,16 @@
 <?php
     session_start();
+    require_once "functions.php";
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST["username"], $_POST["email"], $_POST["password"])){
+        try {
+            // Création de l'utilisateur
+            createUserInBDD($_POST["username"], $_POST["email"], $_POST["password"]); 
+            // Utilisateur logué automatiquement et redirigé vers index
+            selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
+        } catch (PDOException $e){
+            echo "<br>Erreur lors de l'inscription" . $e->getMessage();
+        }
+    } 
 ?>
 <!DOCTYPE html>
 <head>
@@ -22,16 +33,4 @@
     <a href="./connexion.php">Connexion</a>
 </body>
 
-<?php
-    require_once "functions.php";
-    if(isset($_POST["username"], $_POST["email"], $_POST["password"])){
-        try {
-            // Création de l'utilisateur
-            createUserInBDD($_POST["username"], $_POST["email"], $_POST["password"]); 
-            // Utilisateur logué automatiquement et redirigé vers index
-            selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
-        } catch (PDOException $e){
-            echo "<br>Erreur lors de l'inscription" . $e->getMessage();
-        }
-    } 
-?>
+

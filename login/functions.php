@@ -1,7 +1,7 @@
 <?php
 require_once "../bdd.php";
 
-// BDD
+// BDD Models
 function createUserInBDD($username, $email, $password) {
     global $conn;
     $sql_insert_utilisateur = "INSERT INTO Users(username, email, password) VALUES (:username, :email, :password);";

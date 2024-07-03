@@ -1,5 +1,14 @@
 <?php
     session_start();
+    require_once "functions.php";
+    if($_SERVER['REQUEST_METHOD'] =='POST' && isset($_POST["email"], $_POST["password"])){
+        try {
+            // Utilisateur logué automatiquement et redirigé vers index
+            selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
+        } catch (PDOException $e){
+            echo "<br>Erreur lors de la connexion" . $e->getMessage();
+        }
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -23,15 +32,3 @@
     <a href="./inscription.php">S'inscrire</a>
 </body>
 </html>
-
-<?php
-require_once "functions.php";
-if(isset($_POST["email"], $_POST["password"])){
-    try {
-        // Utilisateur logué automatiquement et redirigé vers index
-        selectUserInBDDAndLogUser($_POST["email"], $_POST["password"]);
-    } catch (PDOException $e){
-        echo "<br>Erreur lors de la connexion" . $e->getMessage();
-    }
-} 
-?>

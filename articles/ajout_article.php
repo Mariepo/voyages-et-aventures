@@ -1,22 +1,13 @@
 <?php
     session_start();
-    require_once __DIR__ . '/../bdd.php';
     require_once "functions.php";
-
-    if($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] == "insert"){
-        global $conn;
-        $sql_insert_article = "INSERT INTO Articles(title, content, category_id, user_id) VALUES(:title, :content, :categorie, :user);";
-        $requete_insert_article = $conn->prepare($sql_insert_article);
-        $requete_insert_article->execute(
-            array(
-                ":title" => htmlspecialchars($_POST["title"]),
-                ":content" => htmlspecialchars($_POST["content"]),
-                ":categorie" => intval($_POST["categorie"]),
-                ":user" => htmlspecialchars($_SESSION['id_username'])
-            )
-        );
-        header('Location:../index.php');
-    };
+    if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] == 'insert'){
+        if(empty($_POST["title"] || $_POST["content"])){
+            echo 'Merci de remplir les champs Titre et Contenu';
+        } else {
+            insertArticleInBDD($_POST["title"], $_POST["content"], $_POST["categorie"], $_SESSION['id_username']);
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +27,7 @@
             </div>
             <div>
                 <label for="content">Contenu *</label>
-                <textarea name="content" id="content" rows="14">Contenu de votre article</textarea>
+                <textarea name="content" id="content" rows="14" placeholder="Contenu de votre article"></textarea>
             </div>
             <div>
                 <label for="categorie">Catégorie :</label>
@@ -45,7 +36,7 @@
                         $categorieArray = selectCategoriesInBDD();
                         foreach($categorieArray as $categorie){
                     ?>
-                        <option value="<?php echo $categorie['id']; ?>"><?php echo $categorie['name']; ?></option>
+                        <option value="<?php echo htmlspecialchars($categorie['id']); ?>"><?php echo htmlspecialchars($categorie['name']); ?></option>
                     <?php 
                         } 
                     ?>
@@ -53,6 +44,7 @@
             </div>
             <div>
                 <button type="submit">Ajouter l'article</button>
+                <a href="../index.php" class="button">Annuler</a>
             </div>
         </form>
     </div>

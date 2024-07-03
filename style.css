@@ -15,6 +15,7 @@ body {
 }
 a {
     all: unset;
+    text-decoration: underline;
     cursor: pointer;
 }
 img {
@@ -76,7 +77,7 @@ button {
     margin: auto;
     padding: 2.4rem 0;
 }
-#form-container h2, #form-container button {
+#form-container h2, #form-container button, #form-container a {
     text-align: center;
     width: 100%;
 }
@@ -93,6 +94,16 @@ form > * {
     gap: 4px;
 }
 
+/* Banner */
+.banner {
+    padding: 12px;
+    width: 100%;
+}
+.banner-success {
+    position: absolute;
+    background-color: green; 
+    color: white;
+}
 
 /* RESPONSIVE BREAKPOINTS */ 
 /* Tablettes et moyennes écrans */
