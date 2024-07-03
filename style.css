@@ -1,4 +1,7 @@
 /* Global */
+:root {
+    --main-bg-color : rgb(219, 221, 231);
+}
 * {
     /* margin: 0; */
     box-sizing: border-box;
@@ -66,6 +69,31 @@ button {
     border-radius: 20px;
 
 }
+
+/* Ajout article */
+#form-container {
+    max-width: 60%;
+    margin: auto;
+    padding: 2.4rem 0;
+}
+#form-container h2, #form-container button {
+    text-align: center;
+    width: 100%;
+}
+form {
+    background-color: var(--main-bg-color);
+    border-radius: 16px;
+    padding: 3.2rem;
+}
+form > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1.6rem;
+    gap: 4px;
+}
+
+
 /* RESPONSIVE BREAKPOINTS */ 
 /* Tablettes et moyennes écrans */
 @media screen and (max-width: 1200px){

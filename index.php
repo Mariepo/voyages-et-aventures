@@ -26,13 +26,19 @@ session_start();
         <div class="container-articles">
             <div class="container-articles-title">
                 <h2>Nos articles</h2>
-                <button>Ajouter un article</button>
+                <button onclick="redirectToCreateArticle()">Ajouter un article</button>
             </div>
             <?php
                 include("./articles/liste_articles.php");
             ?>
         </div>
     </main>
+
+    <script>
+        function redirectToCreateArticle(){
+            window.location.replace('./articles/ajout_article.php');
+        }
+    </script>
 </body>
 </html>
 

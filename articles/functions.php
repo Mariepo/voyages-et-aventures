@@ -1,4 +1,5 @@
 <?php
+    require_once __DIR__ . '/../bdd.php';
     // BBD
     function selectArticlesInBDD(){
         global $conn;
