@@ -16,7 +16,7 @@ function createUserInBDD($username, $email, $password) {
 };
 function selectUserInBDDAndLogUser($email, $password){
     global $conn;
-    $sql_select_utilisateur = "SELECT username, email, password FROM Users WHERE email lIKE :email AND password LIKE :password;";
+    $sql_select_utilisateur = "SELECT id, username, email, password FROM Users WHERE email lIKE :email AND password LIKE :password;";
     $requete_select_utilisateur = $conn->prepare($sql_select_utilisateur);
     $requete_select_utilisateur->execute(
         array(
@@ -26,6 +26,7 @@ function selectUserInBDDAndLogUser($email, $password){
     );
     $resultat = $requete_select_utilisateur->fetch();
     if($resultat != false){
+        $_SESSION["id_username"] = $resultat["id"];
         $_SESSION["username"] = $resultat["username"];
         $_SESSION["email"] = $resultat["email"];
         $_SESSION["password"] = $resultat["password"];

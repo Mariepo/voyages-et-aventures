@@ -49,7 +49,7 @@ button {
 .container-articles-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: flex-start;
     gap: 2.4rem;
 }
 .card {

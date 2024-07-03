@@ -5,16 +5,17 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST' && $_GET['action'] == "insert"){
         global $conn;
-        $sql_insert_article = "INSERT INTO Articles(title, content, category_id) VALUES(:title, :content, :categorie);";
+        $sql_insert_article = "INSERT INTO Articles(title, content, category_id, user_id) VALUES(:title, :content, :categorie, :user);";
         $requete_insert_article = $conn->prepare($sql_insert_article);
         $requete_insert_article->execute(
             array(
                 ":title" => htmlspecialchars($_POST["title"]),
                 ":content" => htmlspecialchars($_POST["content"]),
-                ":categorie" => intval($_POST["categorie"])
+                ":categorie" => intval($_POST["categorie"]),
+                ":user" => htmlspecialchars($_SESSION['id_username'])
             )
         );
-        echo "Article créé avec succès!";
+        header('Location:../index.php');
     };
 ?>
 
