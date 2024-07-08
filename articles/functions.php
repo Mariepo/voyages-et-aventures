@@ -56,6 +56,14 @@
         header('Location:../index.php?update=success');
     }
 
+    // BBD Models DROP / DELETE
+    function deleteArticleInBDD($id_article, $id_user){
+        global $conn;
+        $sql_delete_article = "DELETE FROM Articles WHERE  id = ? AND user_id = ?";
+        $requete_delete_article = $conn->prepare($sql_delete_article);
+        $requete_delete_article->execute([$id_article, $id_user]);
+    }
+
     // DISPLAY 
     function returnCategorieNameFromArticle($article){
         $categoriesArray = selectCategoriesInBDD();

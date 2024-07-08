@@ -22,7 +22,7 @@
                             echo "<div>";
                             echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
                             // echo "<a onclick='displayDeleteModal(\"" . $article['title'] . "\")' href='#' class='action-danger'>Supprimer</a>";
-                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\")' href='#' class='action-danger'>Supprimer</a>";
+                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\")' href='#' class='action-danger'>Supprimer</a>";
                             echo "</div>";
                         }
                     echo "</div>";
@@ -58,12 +58,12 @@
         const closeButton = document.querySelector(".close-btn");
         componentToClose.style.display = "none";
     }
-    function displayDeleteModal(articleName, articleID){
+    function displayDeleteModal(articleName, articleID, userID){
         const deleteModal = document.querySelector("#js-delete-modal");
         const componentName = document.querySelector("#article-name");
         const deleteForm = document.querySelector("#delete-form");
         componentName.textContent = articleName;
-        deleteForm.action = "./?action=delete&id_article=" + articleID;
+        deleteForm.action = "articles/supprimer_article.php?action=delete&id_article=" + articleID + "&id_user=" + userID;
         deleteModal.style.display = "block";
     }
 </script>
