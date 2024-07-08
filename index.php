@@ -1,7 +1,7 @@
 <?php
     session_start();
     require_once "./functions-global.php";
-    displaySuccessBanner('Destination ajoutée avec succès !');
+    displaySuccessBanner();
 ?>
 <!DOCTYPE html>
 <html lang="en">

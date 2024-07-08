@@ -3,13 +3,9 @@
     require_once "functions.php";
     $id_article = $_GET["id_article"];
     $article = selectArticleByIdInBDD($id_article);
-    // if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] == 'insert'){
-    //     if(empty($_POST["title"] || $_POST["content"])){
-    //         echo 'Merci de remplir les champs Titre et Contenu';
-    //     } else {
-    //         insertArticleInBDD($_POST["title"], $_POST["content"], $_POST["categorie"], $_SESSION['id_username']);
-    //     }
-    // }
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'update'){
+        editArticleInBDD($_GET['id_article'], $_POST['title'], $_POST['content'], $_POST['categorie']);
+    }
 ?>
 
 <!DOCTYPE html>

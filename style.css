@@ -49,6 +49,23 @@ header {
     margin: auto;
 }
 
+/* Buttons */
+.article-link, button {
+    padding: 1rem 1.6rem;
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+.close-btn {
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+
+
 /* Articles */
 .container-articles {
     padding: 6rem 0;
@@ -75,16 +92,6 @@ header {
     border-radius: 16px;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-.article-link, button {
-    padding: 1rem 1.6rem;
-    color: white;
-    background-color: var(--main-color);
-    border-radius: 30px;
-    border: none;
-    outline: none;
-    font-size: 1.6rem;
-    text-decoration: none;
 }
 
 

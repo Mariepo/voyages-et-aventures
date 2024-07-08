@@ -44,15 +44,16 @@
                 ":user" => htmlspecialchars($user)
             )
         );
-        header('Location:../index.php?action=success');
+        header('Location:../index.php?insert=success');
     }
 
     // BBD Models UPDATE
-    function editArticleInBDD($id_article, $title, $content, $id_categorie){
-        global $pdo;
-        $sql_update_article = "UPDATE article SET title = ?, content = ?, category_id = ? WHERE id = ?";
+    function editArticleInBDD($id_article, $title, $content, $categorie){
+        global $conn;
+        $sql_update_article = "UPDATE Articles SET title = ?, content = ?, category_id = ? WHERE id = ?";
         $requete_update_article = $conn->prepare($sql_update_article);
-        $requete_update_article->execute([$title, $content, $id_categorie, $id_article]);
+        $requete_update_article->execute([$title, $content, $categorie, $id_article]);
+        header('Location:../index.php?update=success');
     }
 
     // Display
