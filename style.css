@@ -30,6 +30,8 @@ ul {
 }
 button {
     cursor: pointer;
+    outline: none;
+    border: none;
 }
 main > * {
     max-width: 90%;
@@ -57,8 +59,6 @@ header {
     color: white;
     background-color: var(--main-color);
     border-radius: 30px;
-    border: none;
-    outline: none;
     font-size: 1.6rem;
     text-decoration: none;
     cursor: pointer;
@@ -168,12 +168,22 @@ header {
     height: 100%; 
     background-color: rgba(0,0,0,0.4); 
 }
-.modal-content {
+.delete-modal-content {
 background-color: #fefefe;
 margin: 15% auto;
 padding: 20px;
 border: 1px solid #888;
 width: 80%; /
+}
+.delete-modal-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2.4rem 0;
+}
+.delete-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 2.4rem 0;
 }
 
 /* RESPONSIVE BREAKPOINTS */ 

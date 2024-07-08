@@ -21,8 +21,8 @@
                         if($article['user_id'] == $_SESSION["id_username"]) {
                             echo "<div>";
                             echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
-                            // echo "<a href='articles/supprimer_article.php?action=edit&id_article=" .$article['id'] . "' class='action-danger'>Supprimer</a>";
-                            echo "<a onclick='displayDeleteModal(\"" . $article['title'] . "\")' href='#' class='action-danger'>Supprimer</a>";
+                            // echo "<a onclick='displayDeleteModal(\"" . $article['title'] . "\")' href='#' class='action-danger'>Supprimer</a>";
+                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\")' href='#' class='action-danger'>Supprimer</a>";
                             echo "</div>";
                         }
                     echo "</div>";
@@ -33,13 +33,16 @@
 
 <!-- Modal de suppresion -->
 <div id="js-delete-modal"  class="modal">
-    <div class="modal-content">
-        <button class="close-btn" onclick="closeElement('.modal')">X</button>
-        <h2>Êtes-vous sûrs de vouloir supprimer l'article : <span id="article-name"></span> ?</h2>
-        <form method="post" action="../../controllers/admin/destinations-controller.php?action=confirmDelete">
-            <input type="hidden" id="modal-destination-id" name="id_destination" value="">
-            <button type="submit" class="danger-button">Je supprime</button>
-            <button type="button" onclick="closeElement('.modal')">Annuler</button>
+    <div class="delete-modal-content">
+        <div class="delete-modal-header">
+            <h2>Êtes-vous sûrs de vouloir supprimer l'article : <span id="article-name"></span> ?</h2>
+            <button class="close-btn" onclick="closeElement('.modal')">X</button>
+        </div>
+        <form method="post" id="delete-form" class="delete-modal-actions">
+            <div>
+                <a href="" onclick="closeElement('.modal')">Annuler</a>
+                <button type="submit" class="danger-button">Je supprime</button>
+            </div>
         </form>
     </div>
 </div>
@@ -54,15 +57,13 @@
         const componentToClose = document.querySelector(element);
         const closeButton = document.querySelector(".close-btn");
         componentToClose.style.display = "none";
-        // window.location.replace("../../controllers/admin/destinations-controller.php");
     }
-    function displayDeleteModal(articleName){
+    function displayDeleteModal(articleName, articleID){
         const deleteModal = document.querySelector("#js-delete-modal");
-        console.log(deleteModal);
-        // const modalDestinationId = document.querySelector("#modal-destination-id");
         const componentName = document.querySelector("#article-name");
-        // modalDestinationId.value = id_destination;
+        const deleteForm = document.querySelector("#delete-form");
         componentName.textContent = articleName;
+        deleteForm.action = "./?action=delete&id_article=" + articleID;
         deleteModal.style.display = "block";
     }
 </script>
