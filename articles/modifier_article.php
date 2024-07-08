@@ -1,6 +1,8 @@
 <?php
     session_start();
     require_once "functions.php";
+    $id_article = $_GET["id_article"];
+    $article = selectArticleByIdInBDD($id_article);
     // if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_GET['action']) && $_GET['action'] == 'insert'){
     //     if(empty($_POST["title"] || $_POST["content"])){
     //         echo 'Merci de remplir les champs Titre et Contenu';
@@ -11,7 +13,7 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,19 +21,20 @@
 </head>
 <body class="main-background-color">
     <div  id="form-container">
-        <h2>Modifier un article</h2>
-        <form action="?action=edit" method="POST">
+        <h2>Modifier l'article</h2>
+        <form action="?action=update&id_article=<?php echo $id_article; ?>" method="POST">
             <div>
                 <label for="title">Titre *</label>
-                <input type="text" name="title" placeholder="Titre de votre article">
+                <input type="text" name="title" placeholder="Titre de votre article" value="<?php echo $article['title']; ?>">
             </div>
             <div>
                 <label for="content">Contenu *</label>
-                <textarea name="content" id="content" rows="14" placeholder="Contenu de votre article"></textarea>
+                <textarea name="content" id="content" rows="14" placeholder="Contenu de votre article"><?php echo $article['content']; ?></textarea>
             </div>
             <div>
                 <label for="categorie">Catégorie :</label>
                 <select name="categorie" id="categorie">
+                    <option selected value="<?php echo htmlspecialchars($categorie['id']); ?>"><?php echo returnCategorieNameFromArticle($article); ?></option>
                     <?php
                         $categorieArray = selectCategoriesInBDD();
                         foreach($categorieArray as $categorie){
@@ -43,7 +46,7 @@
                 </select>
             </div>
             <div>
-                <button type="submit">Modifer l'article</button>
+                <button type="submit">Modifier l'article</button>
                 <a href="../index.php" class="button">Annuler</a>
             </div>
         </form>

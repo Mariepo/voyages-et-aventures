@@ -16,7 +16,7 @@ body {
 }
 a {
     all: unset;
-    /* text-decoration: underline; */
+    text-decoration: underline;
     cursor: pointer;
 }
 img {
@@ -47,9 +47,6 @@ header {
     align-items: center;
     max-width: 90%;
     margin: auto;
-}
-header a {
-    text-decoration: underline;
 }
 
 /* Articles */
@@ -87,6 +84,7 @@ header a {
     border: none;
     outline: none;
     font-size: 1.6rem;
+    text-decoration: none;
 }
 
 

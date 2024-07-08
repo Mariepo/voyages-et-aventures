@@ -4,11 +4,18 @@
     // BBD Models SELECT
     function selectArticlesInBDD(){
         global $conn;
-        $sql_select_articles = "SELECT title, content, image, user_id, category_id, created_at FROM Articles ORDER BY created_at DESC;";
+        $sql_select_articles = "SELECT id, title, content, image, user_id, category_id, created_at FROM Articles ORDER BY created_at DESC;";
         $requete_select_articles = $conn->prepare($sql_select_articles);
         $requete_select_articles->execute();
         return $requete_select_articles->fetchAll(PDO::FETCH_ASSOC);
     };
+    function selectArticleByIdInBDD($id_article){
+        global $conn;
+        $sql_select_article_by_id = "SELECT id, title, content, image, user_id, category_id, created_at FROM Articles WHERE id = ?;";
+        $requete_select_article_by_id = $conn->prepare($sql_select_article_by_id);
+        $requete_select_article_by_id->execute([$id_article]);
+        return $requete_select_article_by_id->fetch(PDO::FETCH_ASSOC);
+    }
     function selectCategoriesInBDD(){
         global $conn;
         $sql_select_categories = "SELECT id, name FROM Categories;";

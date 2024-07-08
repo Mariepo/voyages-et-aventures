@@ -16,9 +16,10 @@
                     echo "<p>" . limitContentSize($content, 200) . "</p>";
                     echo "<span>Écrit par " . returnUserNameFromArticle($article) . " le " . date_format(date_create($article['created_at']), 'Y-m-d') . "</span>";
                     echo "<a href='#' class='article-link'>Lire l'article</a>";
+                    echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
                 echo "</div>";
             }
-            ?>
+        ?>
     </div>
 </body>
 </html>
