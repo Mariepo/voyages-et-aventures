@@ -43,7 +43,7 @@
                 </select>
             </div>
             <div>
-                <button type="submit">Ajouter l'article</button>
+                <button type="submit" class="main-button">Ajouter l'article</button>
                 <a href="../index.php" class="button">Annuler</a>
             </div>
         </form>

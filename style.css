@@ -2,6 +2,8 @@
 :root {
     --main-bg-color : #ddf3e8;
     --main-color : #43B97F;
+    --text-secondary : #6a6a6a;
+    --danger : rgb(195, 1, 1);
 }
 * {
     margin: 0;
@@ -50,7 +52,7 @@ header {
 }
 
 /* Buttons */
-.article-link, button {
+.article-link, .main-button, .danger-button {
     padding: 1rem 1.6rem;
     color: white;
     background-color: var(--main-color);
@@ -59,12 +61,15 @@ header {
     outline: none;
     font-size: 1.6rem;
     text-decoration: none;
+    cursor: pointer;
+}
+.danger-button {
+    background-color: var(--danger);
 }
 .close-btn {
     border-radius: 4px;
     padding: 6px 12px;
 }
-
 
 /* Articles */
 .container-articles {
@@ -87,13 +92,33 @@ header {
     flex-basis: calc(32% - (32px/2));
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.6rem;
+    justify-content: space-between;
+    gap: 3rem;
     padding: 2.4rem;
     border-radius: 16px;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.card-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.card-actions div a {
+    padding: 0.8rem;
+    color : var(--text-secondary)
+}
+.action-danger,  .card-actions div .action-danger{
+    color: rgb(195, 1, 1);
+    text-decoration: underline;
+}
 
 /* Ajout article */
 #form-container {
@@ -108,12 +133,12 @@ header {
     text-align: center;
     width: 100%;
 }
-form {
+#form-container form {
     background-color: white;
     border-radius: 16px;
     padding: 3.2rem;
 }
-form > * {
+#form-container form > * {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -130,6 +155,25 @@ form > * {
     position: absolute;
     background-color: green; 
     color: white;
+}
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4); 
+}
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto;
+padding: 20px;
+border: 1px solid #888;
+width: 80%; /
 }
 
 /* RESPONSIVE BREAKPOINTS */ 

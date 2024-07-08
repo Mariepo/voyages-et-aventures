@@ -28,7 +28,7 @@
         <div class="container-articles">
             <div class="container-articles-title">
                 <h2>Nos articles</h2>
-                <button onclick="redirectToCreateArticle()">Ajouter un article</button>
+                <button class="main-button" onclick="redirectToCreateArticle()">Ajouter un article</button>
             </div>
             <?php
                 include("./articles/liste_articles.php");

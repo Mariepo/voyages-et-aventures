@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <head>
     <title>Inscription</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <h1>Formulaire d'inscription</h1>
@@ -31,9 +32,9 @@
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" required><br>
 
-        <input type="submit" value="Envoyer">
+        <input type="submit" class="main-button" value="Envoyer">
+        <a href="./connexion.php">Connexion</a>
     </form>
-    <a href="./connexion.php">Connexion</a>
 </body>
 
 
