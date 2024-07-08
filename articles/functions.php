@@ -47,6 +47,14 @@
         header('Location:../index.php?action=success');
     }
 
+    // BBD Models UPDATE
+    function editArticleInBDD($id_article, $title, $content, $id_categorie){
+        global $pdo;
+        $sql_update_article = "UPDATE article SET title = ?, content = ?, category_id = ? WHERE id = ?";
+        $requete_update_article = $conn->prepare($sql_update_article);
+        $requete_update_article->execute([$title, $content, $id_categorie, $id_article]);
+    }
+
     // Display
     function returnCategorieNameFromArticle($article){
         $categoriesArray = selectCategoriesInBDD();
