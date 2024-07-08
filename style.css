@@ -1,9 +1,10 @@
 /* Global */
 :root {
-    --main-bg-color : rgb(219, 221, 231);
+    --main-bg-color : #ddf3e8;
+    --main-color : #43B97F;
 }
 * {
-    /* margin: 0; */
+    margin: 0;
     box-sizing: border-box;
 }
 html {
@@ -15,7 +16,7 @@ body {
 }
 a {
     all: unset;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     cursor: pointer;
 }
 img {
@@ -28,61 +29,82 @@ ul {
 button {
     cursor: pointer;
 }
-
+main > * {
+    max-width: 90%;
+    margin: auto;
+}
+.main-background-color {
+    background-color: var(--main-bg-color);
+}
 /* Index */
+header {
+    padding: 4rem 0;
+    background-color: white;
+}
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2.4rem 0;
-    border-bottom: 1px solid rgb(198, 210, 222);
+    max-width: 90%;
+    margin: auto;
+}
+header a {
+    text-decoration: underline;
 }
 
 /* Articles */
 .container-articles {
-    padding: 2.4rem 0;
+    padding: 6rem 0;
 }
 .container-articles-title {
     display: flex;
     gap: 1.6rem;
     align-items: center;
+    padding: 2.4rem 0;
 }
 .container-articles-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 2.4rem;
+    gap: 32px;
 }
 .card {
     display: flex;
-    flex-basis: calc(33% - (24px/2));
+    flex-basis: calc(32% - (32px/2));
     flex-direction: column;
     align-items: flex-start;
     gap: 1.6rem;
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: rgb(220, 232, 236);
+    padding: 2.4rem;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-.article-link {
-    padding: 0.8rem;
+.article-link, button {
+    padding: 1rem 1.6rem;
     color: white;
-    background-color: rgb(71, 111, 146);
-    border-radius: 20px;
-
+    background-color: var(--main-color);
+    border-radius: 30px;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
 }
+
 
 /* Ajout article */
 #form-container {
     max-width: 60%;
     margin: auto;
-    padding: 2.4rem 0;
+    padding: 4rem 0;
+}
+#form-container h2 {
+    padding: 2rem 0;
 }
 #form-container h2, #form-container button, #form-container a {
     text-align: center;
     width: 100%;
 }
 form {
-    background-color: var(--main-bg-color);
+    background-color: white;
     border-radius: 16px;
     padding: 3.2rem;
 }

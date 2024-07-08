@@ -11,7 +11,7 @@
     <title>Voyages et aventures</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<body>
+<body class="main-background-color">
     <header>
         <?php
             if(!isset($_SESSION["email"], $_SESSION["password"])){
