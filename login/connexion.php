@@ -8,7 +8,8 @@
         } catch (PDOException $e){
             echo "<br>Erreur lors de la connexion" . $e->getMessage();
         }
-    } 
+    };
+    redirectLoggedUserToIndex($_SESSION["email"], $_SESSION["password"]);
 ?>
 
 <!DOCTYPE html>

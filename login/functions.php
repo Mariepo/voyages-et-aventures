@@ -34,3 +34,9 @@ function selectUserInBDDAndLogUser($email, $password){
         header("Location:../index.php");
     }
 }
+
+function redirectLoggedUserToIndex($email, $password){
+    if(isset($email, $password)){
+        header('Location: ../index.php');
+    }
+}
