@@ -48,15 +48,15 @@
     }
 
     // BBD Models UPDATE
-    function editArticleInBDD($id_article, $title, $content, $categorie){
+    function editArticleInBDD($id_article, $title, $content, $categorie, $id_user){
         global $conn;
-        $sql_update_article = "UPDATE Articles SET title = ?, content = ?, category_id = ? WHERE id = ?";
+        $sql_update_article = "UPDATE Articles SET title = ?, content = ?, category_id = ? WHERE id = ? AND user_id = ?";
         $requete_update_article = $conn->prepare($sql_update_article);
-        $requete_update_article->execute([$title, $content, intval($categorie), $id_article]);
+        $requete_update_article->execute([$title, $content, intval($categorie), $id_article, $id_user]);
         header('Location:../index.php?update=success');
     }
 
-    // Display
+    // DISPLAY 
     function returnCategorieNameFromArticle($article){
         $categoriesArray = selectCategoriesInBDD();
         foreach($categoriesArray as $categorie){
