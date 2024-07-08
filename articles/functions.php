@@ -52,7 +52,7 @@
         global $conn;
         $sql_update_article = "UPDATE Articles SET title = ?, content = ?, category_id = ? WHERE id = ?";
         $requete_update_article = $conn->prepare($sql_update_article);
-        $requete_update_article->execute([$title, $content, $categorie, $id_article]);
+        $requete_update_article->execute([$title, $content, intval($categorie), $id_article]);
         header('Location:../index.php?update=success');
     }
 

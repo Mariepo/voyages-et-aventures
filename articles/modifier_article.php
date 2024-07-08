@@ -4,7 +4,7 @@
     $id_article = $_GET["id_article"];
     $article = selectArticleByIdInBDD($id_article);
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'update'){
-        editArticleInBDD($_GET['id_article'], $_POST['title'], $_POST['content'], $_POST['categorie']);
+        editArticleInBDD($_GET['id_article'], $_POST['title'], $_POST['content'], $_POST['categorie'] );
     }
 ?>
 
@@ -30,10 +30,11 @@
             <div>
                 <label for="categorie">Catégorie :</label>
                 <select name="categorie" id="categorie">
-                    <option selected value="<?php echo htmlspecialchars($categorie['id']); ?>"><?php echo returnCategorieNameFromArticle($article); ?></option>
+                    <option selected value="<?php echo htmlspecialchars($article['category_id']); ?>"><?php echo returnCategorieNameFromArticle($article); ?></option>
                     <?php
                         $categorieArray = selectCategoriesInBDD();
                         foreach($categorieArray as $categorie){
+                            // if ($categorie['name'] == ) continue;
                     ?>
                         <option value="<?php echo htmlspecialchars($categorie['id']); ?>"><?php echo htmlspecialchars($categorie['name']); ?></option>
                     <?php 
