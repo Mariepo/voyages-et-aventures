@@ -3,11 +3,6 @@
     require_once "functions.php";
     $id_article = $_GET["id_article"];
     $article = selectArticleByIdInBDD($id_article);
-
-    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'insert_comment'){
-        insertCommentInBDD($_POST['comment'], $_SESSION['id_username'], $id_article);
-        echo "commentaire ajouté";
-    };
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -42,8 +37,18 @@
         <section class="section-article">
             <h2>Ajouter un commentaire</h2>
             <form action="./details_article.php?id_article=<?php echo $article['id'] ?>&action=insert_comment" method="post">
-                <textarea name="comment" id="comment" class="comment-textarea" rows="4" placeholder="Votre commentaire" required></textarea>
+                <textarea name="comment" id="comment" class="comment-textarea" rows="4" placeholder="Votre commentaire" ></textarea>
                 <button class="main-button" type="submit">Poster le commentaire</button>
+                <?php
+                    if($_SERVER['REQUEST_METHOD'] && isset($_GET['action']) && $_GET['action'] == 'insert_comment'){
+                        if(empty($_POST['comment'])){
+                            echo "<div class='danger-text'>Veuillez saisir votre commentaire</div>";
+                        } else {
+                            insertCommentInBDD($_POST['comment'], $_SESSION['id_username'], $id_article);
+                            echo "<div class='success-text'>Commentaire ajouté avec succès</div>";
+                        }
+                    };
+                ?>
             </form>
         </section>
     </main>

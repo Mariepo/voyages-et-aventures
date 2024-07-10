@@ -56,7 +56,7 @@ h1 a {
     text-decoration: none;
 }
 
-/* Buttons */
+/* Buttons & signals */
 .article-link, .main-button, .danger-button {
     padding: 1rem 1.6rem;
     color: white;
@@ -68,6 +68,14 @@ h1 a {
 }
 .danger-button {
     background-color: var(--danger);
+}
+.success-text {
+    color : green;
+    margin: 0.8rem 0;
+}
+.danger-text {
+    color : var(--danger);
+    margin: 0.8rem 0;
 }
 .close-btn {
     border-radius: 4px;
