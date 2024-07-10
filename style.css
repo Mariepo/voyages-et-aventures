@@ -33,10 +33,10 @@ button {
     outline: none;
     border: none;
 }
-main > * {
+/* main > * {
     max-width: 90%;
     margin: auto;
-}
+} */
 .main-background-color {
     background-color: var(--main-bg-color);
 }
@@ -51,6 +51,9 @@ header {
     align-items: center;
     max-width: 90%;
     margin: auto;
+}
+h1 a {
+    text-decoration: none;
 }
 
 /* Buttons */
@@ -74,6 +77,8 @@ header {
 /* Articles */
 .container-articles {
     padding: 6rem 0;
+    max-width: 90%;
+    margin: auto;
 }
 .container-articles-title {
     display: flex;
@@ -85,14 +90,15 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 32px;
+    gap: 30px;
 }
 .card {
     display: flex;
-    flex-basis: calc(32% - (32px/2));
+    flex-basis: calc(33% - (32px/2));
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 3rem;
     padding: 2.4rem;
     border-radius: 16px;
@@ -169,11 +175,11 @@ header {
     background-color: rgba(0,0,0,0.4); 
 }
 .delete-modal-content {
-background-color: #fefefe;
-margin: 15% auto;
-padding: 20px;
-border: 1px solid #888;
-width: 80%; /
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; 
 }
 .delete-modal-header {
     display: flex;
@@ -187,9 +193,25 @@ width: 80%; /
 }
 
 /* article */
+.container-article-details {
+    max-width: 70%;
+    margin: 6rem auto;
+    border-radius: 16px;
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 article {
-    max-width: 50%;
-    margin: auto;
+    padding: 5rem 5rem 2rem 5rem;
+}
+.article-actions{
+    max-width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 5rem 5rem 5rem;
+}
+.article-actions a {
+    padding: 0.8rem;
 }
 
 /* RESPONSIVE BREAKPOINTS */ 

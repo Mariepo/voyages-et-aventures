@@ -21,7 +21,7 @@
                         if($article['user_id'] == $_SESSION["id_username"]) {
                             echo "<div>";
                             echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
-                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\")' href='#' class='action-danger'>Supprimer</a>";
+                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\", \"articles/supprimer_article.php\")' href='#' class='action-danger'>Supprimer</a>";
                             echo "</div>";
                         }
                     echo "</div>";
@@ -47,22 +47,22 @@
 </div>
 <!-- Fin de la modal de suppresion -->
 
+    <script>
+        function closeElement(element){
+            const componentToClose = document.querySelector(element);
+            const closeButton = document.querySelector(".close-btn");
+            componentToClose.style.display = "none";
+        }
+        function displayDeleteModal(articleName, articleID, userID, path){
+            const deleteModal = document.querySelector("#js-delete-modal");
+            const componentName = document.querySelector("#article-name");
+            const deleteForm = document.querySelector("#delete-form");
+            componentName.textContent = articleName;
+            deleteForm.action = path + "?action=delete&id_article=" + articleID + "&id_user=" + userID;
+            deleteModal.style.display = "block";
+        }
+    </script>
 </body>
 </html>
 
 
-<script>
-    function closeElement(element){
-        const componentToClose = document.querySelector(element);
-        const closeButton = document.querySelector(".close-btn");
-        componentToClose.style.display = "none";
-    }
-    function displayDeleteModal(articleName, articleID, userID){
-        const deleteModal = document.querySelector("#js-delete-modal");
-        const componentName = document.querySelector("#article-name");
-        const deleteForm = document.querySelector("#delete-form");
-        componentName.textContent = articleName;
-        deleteForm.action = "articles/supprimer_article.php?action=delete&id_article=" + articleID + "&id_user=" + userID;
-        deleteModal.style.display = "block";
-    }
-</script>
