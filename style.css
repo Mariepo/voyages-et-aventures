@@ -186,6 +186,12 @@ width: 80%; /
     padding: 2.4rem 0;
 }
 
+/* article */
+article {
+    max-width: 50%;
+    margin: auto;
+}
+
 /* RESPONSIVE BREAKPOINTS */ 
 /* Tablettes et moyennes écrans */
 @media screen and (max-width: 1200px){

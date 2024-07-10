@@ -17,11 +17,10 @@
                         echo "<span>Écrit par " . returnUserNameFromArticle($article) . " le " . date_format(date_create($article['created_at']), 'Y-m-d') . "</span>";
                     echo "</div>";
                     echo "<div class='card-actions'>";
-                        echo "<a href='#' class='article-link'>Lire l'article</a>";
+                        echo "<a href='articles/details_article.php?id_article=" . $article['id'] . "' class='article-link'>Lire l'article</a>";
                         if($article['user_id'] == $_SESSION["id_username"]) {
                             echo "<div>";
                             echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
-                            // echo "<a onclick='displayDeleteModal(\"" . $article['title'] . "\")' href='#' class='action-danger'>Supprimer</a>";
                             echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\")' href='#' class='action-danger'>Supprimer</a>";
                             echo "</div>";
                         }
