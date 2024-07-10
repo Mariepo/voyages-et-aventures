@@ -46,6 +46,18 @@
         );
         header('Location:../index.php?insert=success');
     }
+    function insertCommentInBDD($comment, $user, $article){
+        global $conn;
+        $sql_insert_comment = "INSERT INTO Comments(content, user_id, article_id) VALUES(:comment, :user, :article)";
+        $requete_insert_comment = $conn->prepare($sql_insert_comment);
+        $requete_insert_comment->execute(
+            array(
+                ":comment"=> htmlspecialchars($comment),
+                ":user"=> htmlspecialchars($user),
+                "article"=> htmlspecialchars($article)
+            )
+        );
+    }
 
     // BBD Models UPDATE
     function editArticleInBDD($id_article, $title, $content, $categorie, $id_user){
@@ -86,4 +98,7 @@
             return $contenu = mb_substr($contenu, 0, $maxSize) . '...';
         }
     }
-    
+    function autoParagraph($text) {
+        // Remplacer les retours à la ligne par des balises de paragraphe
+        return '<p>' . preg_replace('/\n+/', '</p><p>', nl2br($text)) . '</p>';
+    }

@@ -193,25 +193,28 @@ h1 a {
 }
 
 /* article */
-.container-article-details {
+.section-article {
     max-width: 70%;
-    margin: 6rem auto;
+    margin: 4rem auto;
     border-radius: 16px;
+    padding: 5rem;
     background-color: white;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-}
-article {
-    padding: 5rem 5rem 2rem 5rem;
 }
 .article-actions{
     max-width: 70%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 5rem 5rem 5rem;
 }
 .article-actions a {
-    padding: 0.8rem;
+    padding: 2.4rem 0.8rem;
+}
+
+/* comment */
+.comment-textarea {
+    width: 100%;
+    margin: 2.4rem 0;
 }
 
 /* RESPONSIVE BREAKPOINTS */ 
