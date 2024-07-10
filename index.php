@@ -12,18 +12,10 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body class="main-background-color">
-    <header>
-        <?php
-            if(!isset($_SESSION["email"], $_SESSION["password"])){
-                header('Location: ./login/inscription.php');
-            } else {
-                echo '<div class="header">';
-                    echo '<h1>Bonjour ' . $_SESSION["username"] . '</h1>';
-                    echo '<a href="./login/deconnexion.php">Se déconnecter</a>';
-                echo "</div>";
-            }
-        ?>
-    </header>
+    <?php 
+        require_once "header.php";
+        buildHeader("./");
+     ?>
     <main>
         <div class="container-articles">
             <div class="container-articles-title">

@@ -86,4 +86,4 @@
             return $contenu = mb_substr($contenu, 0, $maxSize) . '...';
         }
     }
-
+    
