@@ -24,7 +24,7 @@
             const componentName = document.querySelector("#article-name");
             const deleteForm = document.querySelector("#delete-form");
             componentName.textContent = articleName;
-            deleteForm.action = path + "?action=delete&id_article=" + articleID + "&id_user=" + userID;
+            deleteForm.action = path + "?action=delete&id_article=" + articleID;
             deleteModal.style.display = "block";
         }
 </script>

@@ -2,6 +2,7 @@
     session_start();
     require_once "./functions-global.php";
     displaySuccessBanner();
+    displayErrorBanner();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,7 @@
 <body class="main-background-color">
     <?php 
         require_once "header.php";
-        buildHeader("./");
+        buildHeader("./", "./");
      ?>
     <main>
         <div class="container-articles">

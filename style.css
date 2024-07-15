@@ -100,6 +100,9 @@ h1 a {
     justify-content: flex-start;
     gap: 30px;
 }
+.container-articles-list a {
+    text-decoration: none;
+}
 .card {
     display: flex;
     flex-basis: calc(33% - (32px/2));
@@ -127,11 +130,11 @@ h1 a {
 }
 .card-actions div a {
     padding: 0.8rem;
-    color : var(--text-secondary)
+    color : var(--text-secondary);
+    text-decoration: underline;
 }
 .action-danger,  .card-actions div .action-danger{
     color: rgb(195, 1, 1);
-    text-decoration: underline;
 }
 
 /* Ajout article */
@@ -164,11 +167,14 @@ h1 a {
 .banner {
     padding: 12px;
     width: 100%;
+    color: white;
+    position: absolute;
 }
 .banner-success {
-    position: absolute;
     background-color: green; 
-    color: white;
+}
+.banner-error {
+    background-color: var(--danger); 
 }
 
 /* Modal */
@@ -218,11 +224,31 @@ h1 a {
 .article-actions a {
     padding: 2.4rem 0.8rem;
 }
+.article-details {
+    padding: 2.4rem 0;
+    color : var(--text-secondary);
+    font-size: 1.4rem;
+}
 
 /* comment */
 .comment-textarea {
     width: 100%;
     margin: 2.4rem 0;
+}
+.comment {
+    border-bottom: 1px solid rgb(207, 207, 207);
+    padding: 1.6rem 0;
+}
+.comment-details {
+    padding: 0.8rem 0 0 0;
+    color : var(--text-secondary);
+    font-size: 1.4rem;
+}
+.comment-details > * {
+    margin: 0 0.4rem;
+}
+.view-comment {
+    margin-top : 4rem;
 }
 
 /* RESPONSIVE BREAKPOINTS */ 

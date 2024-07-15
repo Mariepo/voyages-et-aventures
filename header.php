@@ -1,5 +1,5 @@
 <?php
-    function buildHeader($path){
+    function buildHeader($pathHome, $pathDeconnect){
 ?>
     <header>
         <?php
@@ -8,8 +8,8 @@
                 exit;
             } else {
                 echo '<div class="header">';
-                    echo '<h1><a href="' . $path . '">Bonjour ' . $_SESSION["username"] . '</a></h1>';
-                    echo '<a href="./login/deconnexion.php">Se déconnecter</a>';
+                    echo '<h1><a href="' . $pathHome . '">Bonjour ' . $_SESSION["username"] . '</a></h1>';
+                    echo '<a href="' . $pathDeconnect . 'login/deconnexion.php">Se déconnecter</a>';
                 echo "</div>";
             }
         ?>
