@@ -7,8 +7,17 @@
         header('Location: ../index.php');
     }
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'update'){
-        editArticleInBDD($_GET['id_article'], $_POST['title'], $_POST['content'], $_POST['categorie'], $_SESSION["id_username"] );
+        if(empty($_POST["title"] || $_POST["content"])){
+            echo '<div class="action-danger">Merci de remplir les champs Titre et Contenu</div>';
+        } elseif (empty($_POST["title"])){
+            echo '<div class="action-danger">Merci de remplir le champ Titre</div>';
+        } elseif (empty($_POST["content"])){
+            echo '<div class="action-danger">Merci de remplir le champ Contenu</div>';
+        } else {
+            editArticleInBDD($_GET['id_article'], $_POST['title'], $_POST['content'], $_POST['categorie'], $_SESSION["id_username"] );
+        }
     }
+
 ?>
 
 <!DOCTYPE html>

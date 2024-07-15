@@ -30,6 +30,21 @@
         $requete_select_user->execute();
         return $requete_select_user->fetchAll(PDO::FETCH_ASSOC);
     }
+    function selectCommentInBDD(){
+        global $conn;
+        $sql_select_comment = "SELECT Comments.id, content, user_id, article_id, username, created_at FROM Comments JOIN Users ON Comments.user_id = Users.id ORDER BY created_at DESC;";
+        $requete_select_comment = $conn->prepare($sql_select_comment);
+        $requete_select_comment->execute();
+        return $requete_select_comment->fetchAll(PDO::FETCH_ASSOC);
+    }
+    function selectCommentByIDD($id_comment) {
+        global $conn;
+        $sql_select_comment_by_id = "SELECT id, content, user_id, article_id, created_at FROM Comments WHERE id = ?;";
+        $requete_select_comment_by_id = $conn->prepare($sql_select_comment_by_id);
+        $requete_select_comment_by_id->execute([$id_comment]);
+        return $requete_select_comment_by_id->fetch(PDO::FETCH_ASSOC);
+    }
+
 
     // BBD Models INSERT
     function insertArticleInBDD($title, $content, $categorie, $user){
@@ -54,9 +69,10 @@
             array(
                 ":comment"=> htmlspecialchars($comment),
                 ":user"=> htmlspecialchars($user),
-                "article"=> htmlspecialchars($article)
+                ":article"=> htmlspecialchars($article)
             )
         );
+        // header('Location:../articles/details_article.php?id_article=' . $article . '&insert=success');
     }
 
     // BBD Models UPDATE
@@ -74,6 +90,12 @@
         $sql_delete_article = "DELETE FROM Articles WHERE  id = ? AND user_id = ?";
         $requete_delete_article = $conn->prepare($sql_delete_article);
         $requete_delete_article->execute([$id_article, $id_user]);
+    }
+    function deleteCommentInBDD($id_comment, $id_user, $id_article){
+        global $conn;
+        $sql_delete_comment = "DELETE FROM Comments WHERE id = ? AND user_id = ? AND article_id = ?";
+        $requete_delete_comment = $conn->prepare($sql_delete_comment);
+        $requete_delete_comment->execute([$id_comment, $id_user, $id_article]);
     }
 
     // DISPLAY 
