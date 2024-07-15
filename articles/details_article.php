@@ -28,7 +28,8 @@
             </article>
             <div class="article-actions">
                 <?php  if ($article['user_id'] == $_SESSION["id_username"]) {
-                    echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"\", \"articles/supprimer_article.php\")' href='#' class='action-danger'>Supprimer</a>";
+                    echo "<a href='modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
+                    echo "<a onclick=\"displayDeleteModal('" . addslashes($article['title']) . "', '" . $article['id'] . "', 'articles/supprimer_article.php')\" href='#' class='action-danger'>Supprimer</a>";
                 }
                 ?>
             </div>
@@ -63,14 +64,11 @@
                     <div class="comment-details">
                         <span class="comment-details-author"><?php echo $comment['username'] ?></span>
                         <span class="comment-details-divider">•</span>
-                        <span class="comment-details-date">le <?php echo date_format(date_create($comment['created_at']), 'Y-m-d') ?></span>
-                        <a href="./details_article.php?id_article=<?php echo $article['id'] ?>&action=delete_comment" class="comment-details-date action-danger">Supprimer</a>
+                        <span class="comment-details-date">le <?php echo date_format(date_create($comment['created_at']), 'Y-m-d'); ?></span>
                         <?php
-                        if(isset($_GET['action']) && $_GET['action'] == 'delete_comment'){
-                            deleteCommentInBDD($comment['id'], $_SESSION["id_username"], $id_article);
-                            header('Location:../articles/details_article.php?id_article=' . $id_article);
-                        }
-                        ?>
+                        if ($comment['user_id'] == $_SESSION["id_username"]) { ?>
+                            <a href="./supprimer_commentaire.php?id_article=<?php echo $article['id'] ?>&action=delete_comment&comment_id=<?php echo $comment['id']; ?>" class="comment-details-date action-danger">Supprimer</a>
+                        <?php }; ?>
                     </div>
                 </div>
                 <?php }} ?>

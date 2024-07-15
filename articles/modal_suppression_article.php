@@ -19,7 +19,7 @@
             const closeButton = document.querySelector(".close-btn");
             componentToClose.style.display = "none";
         }
-        function displayDeleteModal(articleName, articleID, userID, path){
+        function displayDeleteModal(articleName, articleID, path){
             const deleteModal = document.querySelector("#js-delete-modal");
             const componentName = document.querySelector("#article-name");
             const deleteForm = document.querySelector("#delete-form");

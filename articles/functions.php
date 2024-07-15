@@ -37,6 +37,13 @@
         $requete_select_comment->execute();
         return $requete_select_comment->fetchAll(PDO::FETCH_ASSOC);
     }
+    function selectCommentByIDD($id_comment) {
+        global $conn;
+        $sql_select_comment_by_id = "SELECT id, content, user_id, article_id, created_at FROM Comments WHERE id = ?;";
+        $requete_select_comment_by_id = $conn->prepare($sql_select_comment_by_id);
+        $requete_select_comment_by_id->execute([$id_comment]);
+        return $requete_select_comment_by_id->fetch(PDO::FETCH_ASSOC);
+    }
 
 
     // BBD Models INSERT
@@ -86,9 +93,9 @@
     }
     function deleteCommentInBDD($id_comment, $id_user, $id_article){
         global $conn;
-        $sql_delete_comment = "DELETE FROM Comments WHERE id = ? AND user_id = ?";
+        $sql_delete_comment = "DELETE FROM Comments WHERE id = ? AND user_id = ? AND article_id = ?";
         $requete_delete_comment = $conn->prepare($sql_delete_comment);
-        $requete_delete_comment->execute([$id_comment, $id_user]);
+        $requete_delete_comment->execute([$id_comment, $id_user, $id_article]);
     }
 
     // DISPLAY 

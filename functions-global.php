@@ -24,5 +24,10 @@
                 echo '<span">Vous ne pouvez pas supprimer cet article</span>';
                 echo '<button class="close-btn" onclick=\'closeElement(".banner")\'>X</button>';
             echo '</div>';
+        } elseif (isset($_GET["delete_comment"]) && $_GET["delete_comment"] == "error") {
+            echo '<div class="banner banner-error">';
+                echo '<span">Vous ne pouvez pas supprimer ce commentaire</span>';
+                echo '<button class="close-btn" onclick=\'closeElement(".banner")\'>X</button>';
+            echo '</div>';            
         };
     }

@@ -23,7 +23,7 @@
                         if($article['user_id'] == $_SESSION["id_username"]) {
                             echo "<div>";
                             echo "<a href='articles/modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
-                            echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . "\", \"articles/supprimer_article.php\")' href='#' class='action-danger'>Supprimer</a>";
+                            echo "<a onclick=\"displayDeleteModal('" . addslashes($article['title']) . "', '" . $article['id'] . "', 'articles/supprimer_article.php')\" href='#' class='action-danger'>Supprimer</a>";
                             echo "</div>";
                         }
                     echo "</div>";
