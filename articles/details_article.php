@@ -27,9 +27,10 @@
                 ?>
             </article>
             <div class="article-actions">
-                <?php 
-                echo "<a href='modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
-                echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\", \"supprimer_article.php\")' href='#' class='action-danger'>Supprimer</a>";
+                <?php  if ($article['user_id'] == $_SESSION["id_username"]) {
+                    echo "<a href='modifier_article.php?action=edit&id_article=" .$article['id'] . "'>Modifier</a>";
+                    echo "<a onclick='displayDeleteModal(\"" . addslashes($article['title']) . "\", \"" . $article['id'] . "\", \"" . $article['user_id'] . "\", \"supprimer_article.php\")' href='#' class='action-danger'>Supprimer</a>";
+                }
                 ?>
             </div>
         </section>
