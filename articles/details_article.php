@@ -33,6 +33,7 @@
                 ?>
             </div>
         </section>
+        <!-- Lise des commentaires -->
         <!-- Ajout commentaire -->
         <section class="section-article">
             <h2>Ajouter un commentaire</h2>
