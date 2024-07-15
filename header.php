@@ -6,14 +6,39 @@
             if(!isset($_SESSION["email"], $_SESSION["password"])){
                 header('Location: ./login/inscription.php');
                 exit;
-            } else {
-                echo '<div class="header">';
-                    echo '<h1><a href="' . $pathHome . '">Bonjour ' . $_SESSION["username"] . '</a></h1>';
-                    echo '<a href="' . $pathDeconnect . 'login/deconnexion.php">Se déconnecter</a>';
-                echo "</div>";
-            }
-        ?>
+            } else { ?>
+               <div class="header">
+                    <h1><a href="<?php echo $pathHome ?>">Bonjour <?php echo $_SESSION["username"] ?></a></h1>
+                    <div class="user-profile-dropdown">
+                        <img src="<?php echo $pathHome ?>/img/profile/user-avatar.svg" alt="avatar de l\'utilisateur" class="user-profile-btn" onclick="displayDrodpdown()"/>
+                        <div id="profile-dropdown-content" class="dropdown-content">
+                            <a href="#"><span class="material-icons-outlined icon">settings</span>Paramètres</a>
+                            <div class="horizontal-divider"></div>
+                            <a href=" <?php echo $pathDeconnect ?>login/deconnexion.php"><span class="material-icons-outlined icon">logout</span>Se déconnecter</a>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
     </header>
 <?php
     }
 ?>
+
+<script>
+function displayDrodpdown() {
+  document.getElementById("profile-dropdown-content").classList.toggle("show-dropdown");
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.user-profile-btn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show-dropdown')) {
+        openDropdown.classList.remove('show-dropdown');
+      }
+    }
+  }
+}
+</script>

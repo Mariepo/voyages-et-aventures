@@ -11,11 +11,11 @@
                     echo "<a href='articles/details_article.php?id_article=" . $article['id'] . "' class='card-link'>";
                         echo "<div class='card-content'>";
                             echo "<h2>" . $article['title'] . "</h2>";
-                            echo "<span>" . returnCategorieNameFromArticle($article) . "</span>";
+                            echo "<span class='categorie-tag'>" . returnCategorieNameFromArticle($article) . "</span>";
                             // Limier la taille du contenu
                             $content = $article['content'];
                             echo "<p>" . limitContentSize($content, 300) . "</p>";
-                            echo "<span>Écrit par " . returnUserNameFromArticle($article) . " le " . date_format(date_create($article['created_at']), 'Y-m-d') . "</span>";
+                            echo "<span class='card-details'>Écrit par " . returnUserNameFromArticle($article) . " le " . date_format(date_create($article['created_at']), 'Y-m-d') . "</span>";
                         echo "</div>";
                     echo "</a>";
                     echo "<div class='card-actions'>";
