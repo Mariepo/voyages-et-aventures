@@ -1,6 +1,8 @@
 <?php 
     session_start();
     require_once "functions.php";
+    $id_user = $_SESSION["id_username"];
+    $user = selectUserByIdInBDD($id_user);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -21,11 +23,11 @@
             <h1>Paramètres</h1>
             <div>
                 <label for="username">Nom d'utilisateur</label>
-                <input type="text" name="username" placeholder="Nom d'utilisateur" value="">
+                <input type="text" name="username" placeholder="Nom d'utilisateur" value="<?php echo $user['username'] ?>">
             </div>
             <div>
                 <label for="email">Email : </label>
-                <input type="email" name="email" placeholder="Email" value="">
+                <input type="email" name="email" placeholder="Email" value="<?php echo $user['email'] ?>">
             </div>
             <div>
                 <label for="password">Mot de passe : </label>
