@@ -1,5 +1,5 @@
 <?php
-    function buildHeader($pathHome, $pathDeconnect){
+    function buildHeader($pathRoot, $pathParent){
 ?>
     <header>
         <?php
@@ -8,13 +8,13 @@
                 exit;
             } else { ?>
                <div class="header">
-                    <h1><a href="<?php echo $pathHome ?>">Bonjour <?php echo $_SESSION["username"] ?></a></h1>
+                    <h1><a href="<?php echo $pathRoot ?>">Bonjour <?php echo $_SESSION["username"] ?></a></h1>
                     <div class="user-profile-dropdown">
-                        <img src="<?php echo $pathHome ?>/img/profile/user-avatar.svg" alt="avatar de l\'utilisateur" class="user-profile-btn" onclick="displayDrodpdown()"/>
+                        <img src="<?php echo $pathRoot ?>/img/profile/user-avatar.svg" alt="avatar de l\'utilisateur" class="user-profile-btn" onclick="displayDrodpdown()"/>
                         <div id="profile-dropdown-content" class="dropdown-content">
-                            <a href="#"><span class="material-icons-outlined icon">settings</span>Paramètres</a>
+                            <a href=" <?php echo $pathParent ?>profile/user_profile.php"><span class="material-icons-outlined icon">settings</span>Paramètres</a>
                             <div class="horizontal-divider"></div>
-                            <a href=" <?php echo $pathDeconnect ?>login/deconnexion.php"><span class="material-icons-outlined icon">logout</span>Se déconnecter</a>
+                            <a href=" <?php echo $pathParent ?>login/deconnexion.php"><span class="material-icons-outlined icon">logout</span>Se déconnecter</a>
                         </div>
                     </div>
                 </div>
