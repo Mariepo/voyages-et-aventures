@@ -16,6 +16,11 @@
                 echo '<span">Article supprimé avec succès !</span>';
                 echo '<button class="close-btn" onclick=\'closeElement(".banner")\'>X</button>';
             echo '</div>';
+        } else if (isset($_GET['edit_user']) && $_GET['edit_user'] == 'success'){
+            echo '<div class="banner banner-success">';
+                echo '<span">Paramètres modifiés avec succès !</span>';
+                echo '<button class="close-btn" onclick=\'closeElement(".banner")\'>X</button>';
+            echo '</div>';
         }
     }; 
     function displayErrorBanner(){

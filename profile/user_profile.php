@@ -1,8 +1,14 @@
 <?php 
     session_start();
     require_once "functions.php";
+    require_once "../functions-global.php";
     $id_user = $_SESSION["id_username"];
     $user = selectUserByIdInBDD($id_user);
+    if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_GET['action']) && $_GET['action'] == 'edit'){
+        editUserInBdd($_POST['username'], $_POST['email'], $_POST['password'], $id_user);
+        $_SESSION["username"] = $_POST['username'];
+    }
+    displaySuccessBanner();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,7 +25,7 @@
         buildHeader("..", "../");
     ?>
     <section class="section-profile">
-        <form action="" method="POST">
+        <form action="?action=edit" method="POST">
             <h1>Paramètres</h1>
             <div>
                 <label for="username">Nom d'utilisateur</label>
@@ -41,3 +47,12 @@
     </section>
 </body>
 </html>
+
+<script>
+        function closeElement(element){
+            const componentToClose = document.querySelector(element);
+            const closeButton = document.querySelector(".close-btn");
+            componentToClose.style.display = "none";
+            // window.location.replace("./");
+        }
+    </script>
